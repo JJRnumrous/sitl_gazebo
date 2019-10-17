@@ -1,0 +1,191 @@
+<!--      
+<sensor name="color" type="camera">
+        <pose frame="">0.12 -0.046 -0.004 0 0 0</pose>
+        <camera name="__default__">
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>RGB_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>60</update_rate>
+        <visualize>1</visualize>
+      </sensor>
+      <sensor name="ired1" type="camera">
+        <pose frame="">0.12 -0.06 -0.004 0 0 0</pose>
+        <camera name="__default__">
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>L_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>60</update_rate>
+        <visualize>0</visualize>
+      </sensor>
+      <sensor name="ired2" type="camera">
+        <pose frame="">0.12 0.01 -0.004 0 0 0</pose>
+        <camera name="__default__">
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>L_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>60</update_rate>
+        <visualize>0</visualize>
+      </sensor>
+      <sensor name="depth" type="depth">
+        <pose frame="">0.12 -0.03 -0.004 0 0 0</pose>
+        <camera name="__default__">
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <visualize>1</visualize> 
+       
+      <plugin name="aero_controller" filename="libgazebo_ros_openni_kinect.so">
+          <baseline>0.2</baseline>
+          <alwaysOn>true</alwaysOn>
+          <updateRate>60.0</updateRate>
+          <cameraName>aero_ir</cameraName>
+          <imageTopicName>/aero/depth/image_raw</imageTopicName>
+          <cameraInfoTopicName>/aero/depth/camera_info</cameraInfoTopicName>
+          <depthImageTopicName>/aero/depth/image_raw</depthImageTopicName>
+          <depthImageInfoTopicName>/aero/depth/camera_info</depthImageInfoTopicName>
+          <pointCloudTopicName>/aero/depth/points</pointCloudTopicName>
+          <frameName>aero</frameName>
+          <pointCloudCutoff>0.5</pointCloudCutoff>
+          <distortionK1>0.00000001</distortionK1>
+          <distortionK2>0.00000001</distortionK2>
+          <distortionK3>0.00000001</distortionK3>
+          <distortionT1>0.00000001</distortionT1>
+          <distortionT2>0.00000001</distortionT2>
+          <CxPrime>0</CxPrime>
+          <Cx>0</Cx>
+          <Cy>0</Cy>
+          <focalLength>0</focalLength>
+          <hackBaseline>0</hackBaseline>
+        </plugin>
+      </sensor>  -->
+
+
+
+
+    <!-- <sensor type="depth" name="r200_sensor">
+        <always_on>true</always_on>
+        <update_rate>3.0</update_rate>
+        <visualize>true</visualize>
+        <camera name="head">
+          <horizontal_fov>1.3962634</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <depth_camera>
+            <output>1</output>
+          </depth_camera>
+          <clip>
+            <near>0.02</near>
+            <far>300</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            Noise is sampled independently per pixel on each frame.
+                 That pixel's noise value is added to each of its color
+                 channels, which at that point lie in the range [0,1].
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera> 
+
+        <plugin name="r200_controller" filename="libgazebo_ros_openni_kinect.so">
+          <baseline>0.2</baseline>
+          <alwaysOn>true</alwaysOn>
+          <updateRate>1.0</updateRate>
+          <cameraName>r200_ir</cameraName>
+          <imageTopicName>/r200/depth/image_raw</imageTopicName>
+          <cameraInfoTopicName>/r200/depth/camera_info</cameraInfoTopicName>
+          <depthImageTopicName>/r200/depth/image_raw</depthImageTopicName>
+          <depthImageInfoTopicName>/r200/depth/camera_info</depthImageInfoTopicName>
+          <pointCloudTopicName>/r200/depth/points</pointCloudTopicName>
+          <frameName>aero</frameName>
+          <pointCloudCutoff>0.5</pointCloudCutoff>
+          <distortionK1>0.00000001</distortionK1>
+          <distortionK2>0.00000001</distortionK2>
+          <distortionK3>0.00000001</distortionK3>
+          <distortionT1>0.00000001</distortionT1>
+          <distortionT2>0.00000001</distortionT2>
+          <CxPrime>0</CxPrime>
+          <Cx>0</Cx>
+          <Cy>0</Cy>
+          <focalLength>0</focalLength>
+          <hackBaseline>0</hackBaseline>
+        </plugin>
+      </sensor> -->
+
+
+
+
+      <!-- <plugin name='r200' filename='libRealSensePlugin.so'/> -->
+
+        <!-- <plugin name="vision_plugin" filename="libgazebo_vision_plugin.so">
+        <robotNamespace></robotNamespace>
+        <pubRate>30</pubRate>
+        <randomWalk>1.0</randomWalk>
+        <noiseDensity>5e-04</noiseDensity>
+        <corellationTime>60.0</corellationTime>
+    </plugin> -->
+
+
+  <!-- <plugin name='vio' filename='libgazebo_vio_plugin.so'>
+      <robotNamespace/>
+      <linkName>base_link</linkName>
+    </plugin> -->
+

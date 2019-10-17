@@ -1,0 +1,9 @@
+syntax = "proto2";
+package std_msgs.msgs;
+
+message State
+{  
+  required int64 time_usec                       = 1;
+  required bool armed                            = 2;
+  required bool guided                           = 3;
+}

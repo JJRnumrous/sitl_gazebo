@@ -1,0 +1,225 @@
+<sdf version='1.6'>
+  <model name='aero'>
+    <link name='base_link'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <mass>1.19</mass>
+        <inertia>
+          <ixx>0.022</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.014</iyy> <!--actual x axis since ROS ENU(xyz)-->
+          <iyz>0</iyz>
+          <izz>0.031</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_inertia_collision'>
+        <pose frame=''>0 0 0.01 0 0 0</pose> <!-- 3.14159265359-->
+        <geometry>
+          <box>
+            <size>0.400 0.400 0.225</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.001</min_depth>
+              <max_vel>0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='base_link_inertia_visual'>
+        <pose frame=''>0 0 0 0 0 3.14159265</pose> <!--1.570796327-->
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://aero/meshes/IntelAeroRTF.stl</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>      
+      <velocity_decay/>
+    
+
+
+    
+     <sensor name="color" type="camera">
+        <!-- <pose frame="realsense">0.12 -0.046 -0.004 0 0 0</pose> -->
+        <pose frame="realsense">0.045 0.13 0.0 0 0 1.570796327</pose> 
+        <update_rate>14</update_rate>
+        <camera name="rgb">
+          <horizontal_fov>1.22631043</horizontal_fov> <!--70.262 degrees-->
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.1</near> 
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+          <distortion>
+            <!-- <k1>0.0</k1>
+            <k2>0.0</k2>
+            <k3>0.0</k3>
+            <p1>0.0</p1>
+            <p2>0.0</p2> -->
+
+            <k1>1.2973396482900182e-01</k1>
+            <k2>-9.1613672795706924e-01</k2>            
+            <p1>-9.4123606947222921e-04</p1>
+            <p2>-3.2686786900961188e-04</p2>
+            <k3>1.2153915393328878e+00</k3>
+            <!-- <center>0.5 0.5</center> -->
+
+          </distortion>
+          <!-- <save enabled="true">
+            <path>/home/jjr/Pictures/Aruco/tmp</path>
+          </save>   -->
+        </camera>
+                 
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <cameraName>colour</cameraName>
+        <always_on>1</always_on>
+        <updateRate>0</updateRate>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>aero</frameName>
+        <height>480</height>
+        <width>640</width>
+        <CxPrime>321</CxPrime>
+        <Cx>321</Cx>
+        <Cy>241</Cy>        
+        <focal_length>454.78</focal_length>  <!-- image_width(pix) / (2*tan( hfov(rad) /2)) -->
+        <!-- <hackBaseline>0.0</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2> -->
+
+        <distortionK1>1.2973396482900182e-01</distortionK1>
+        <distortionK2>-9.1613672795706924e-01</distortionK2>        
+        <distortionT1>-9.4123606947222921e-04</distortionT1>
+        <distortionT2>-3.2686786900961188e-04</distortionT2>
+        <distortionK3>1.2153915393328878e+00 </distortionK3>
+
+        <robotNamespace>realsense</robotNamespace> 
+      </plugin>       
+        <visualize>1</visualize>        
+    </sensor>
+
+    </link>     
+
+    <static>0</static>
+    
+
+
+    <plugin name='actuators' filename='libgazebo_forces_moments_actuators_plugin.so'>
+      <robotNamespace/>
+      <linkName>base_link</linkName>
+      <copterConfig>4x</copterConfig>
+      <maxMotorThrust>5.834956749999999</maxMotorThrust>
+      <motorTimeConstant>0.005</motorTimeConstant>
+      <armLength>0.18</armLength>
+      <virtualYawMomentArm>0.0463</virtualYawMomentArm>
+    </plugin>
+
+     <!-- <plugin name='control' filename='libgazebo_control_plugin.so'>
+      <robotNamespace/>
+      <linkName>base_link</linkName>
+    </plugin> -->
+
+      <!-- <plugin name='visual' filename='libgazebo_visual_plugin.so'>
+      <robotNamespace/>
+      <linkName>base_link</linkName>
+    </plugin> -->
+
+    <!-- <plugin name='vision' filename='libgazebo_vision_plugin.so'>
+      <robotNamespace/>
+      <linkName>base_link</linkName>
+      <pubRate>30</pubRate>
+      <corellationTime>200</corellationTime>
+      <randomWalk>0.0000001</randomWalk>
+      <noiseDensity>0.000001</noiseDensity>
+    </plugin> -->
+
+    <plugin name='gps_plugin' filename='libgazebo_gps_plugin.so'>
+      <robotNamespace/>
+      <gpsNoise>1</gpsNoise>
+    </plugin>
+
+      <plugin name='rotors_gazebo_imu_plugin' filename='libgazebo_imu_plugin.so'>
+      <robotNamespace/>
+      <linkName>base_link</linkName>
+      <imuTopic>/imu</imuTopic>
+      <visionSubTopic>/vision_odom</visionSubTopic>
+      <gyroscopeNoiseDensity>0.0003394</gyroscopeNoiseDensity>
+      <gyroscopeRandomWalk>3.8785e-05</gyroscopeRandomWalk>
+      <gyroscopeBiasCorrelationTime>1000.0</gyroscopeBiasCorrelationTime>
+      <gyroscopeTurnOnBiasSigma>0.0087</gyroscopeTurnOnBiasSigma>
+      <accelerometerNoiseDensity>0.004</accelerometerNoiseDensity>
+      <accelerometerRandomWalk>0.006</accelerometerRandomWalk>
+      <accelerometerBiasCorrelationTime>300.0</accelerometerBiasCorrelationTime>
+      <accelerometerTurnOnBiasSigma>0.196</accelerometerTurnOnBiasSigma>
+    </plugin>
+
+    <!-- <plugin name='mavlink_interface' filename='libgazebo_mavlink_interface.so'> -->
+    <plugin name='mavlink_interface' filename='libgazebo_pseudo_mavlink_interface.so'>
+      <robotNamespace/>
+      <imuSubTopic>/imu</imuSubTopic>
+      <imu_rate>250</imu_rate>
+      <!-- <visionSubTopic>/realsense/colour/image_raw</visionSubTopic> -->
+      <gpsSubTopic>/gps</gpsSubTopic>
+
+      <pseudo_mode>0</pseudo_mode>
+      <writeEnabled>1</writeEnabled>
+      <pseudo_gps>1</pseudo_gps>
+      <imuMsgFile>/home/jjr/Pictures/Replays/imu.dat</imuMsgFile>
+      <gpsMsgFile>/home/jjr/Pictures/Replays/gps.dat</gpsMsgFile>
+      <stateMsgFile>/home/jjr/Pictures/state.dat</stateMsgFile>
+  
+      
+
+      <!-- <motorCommandPubTopic>/command/motor</motorCommandPubTopic> -->
+
+      <mavlink_addr>INADDR_ANY</mavlink_addr>
+      <mavlink_tcp_port>4560</mavlink_tcp_port>
+      <enable_lockstep>1</enable_lockstep>
+      <use_tcp>1</use_tcp>
+
+      <hil_mode>0</hil_mode>
+      <hil_state_level>0</hil_state_level>
+      <qgc_addr>INADDR_ANY</qgc_addr>
+      <qgc_udp_port>14550</qgc_udp_port>
+      <mavlink_udp_port>14560</mavlink_udp_port>
+      <sdk_addr>INADDR_ANY</sdk_addr>
+      <sdk_udp_port>14540</sdk_udp_port>
+      <serialEnabled>0</serialEnabled>
+      <serialDevice>/dev/ttyS1</serialDevice>
+      <baudRate>921600</baudRate>
+
+      <vehicle_is_tailsitter>0</vehicle_is_tailsitter>
+      <send_vision_estimation>1</send_vision_estimation>
+      <send_odometry>0</send_odometry>
+    </plugin>
+
+   <!-- <plugin name='sight' filename='libgazebo_sight_plugin.so'>
+      <robotNamespace/>
+      <linkName>base_link</linkName>
+    </plugin> -->
+       
+  
+
+  </model>
+</sdf>

@@ -1,0 +1,11 @@
+syntax = "proto2";
+package geometry_msgs.msgs;
+import "quaternion.proto";
+import "vector3d.proto";
+
+message PoseStamped
+{
+  required int64 time_usec                       = 1;
+  required gazebo.msgs.Vector3d position         = 2;
+  required gazebo.msgs.Quaternion orientation    = 3;  
+}

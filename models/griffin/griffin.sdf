@@ -1,0 +1,129 @@
+<sdf version='1.6'>
+  <model name='griffin'>
+    <link name='base_link'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <mass>4.5</mass>
+        <inertia>
+          <ixx>0.23</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.235</iyy>
+          <iyz>0</iyz>
+          <izz>0.328</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_inertia_collision'>
+        <pose frame=''>0 0 0.184 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.967 0.967 0.37</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.001</min_depth>
+              <max_vel>0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>
+      <visual name='base_link_inertia_visual'>
+        <pose frame=''>0 0 0 0 0 1.570796</pose>
+        <geometry>
+          <mesh>
+            <scale>1 1 1</scale>
+            <uri>model://griffin/meshes/griffin.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <gravity>1</gravity>
+      <velocity_decay/>
+    </link>
+
+    <static>0</static>
+
+    <plugin name='mavlink_interface' filename='libgazebo_mavlink_interface.so'>
+      <robotNamespace/>
+      <imuSubTopic>/imu</imuSubTopic>
+      <gpsSubTopic>/gps</gpsSubTopic>
+      <motorCommandPubTopic>/command/motor</motorCommandPubTopic>
+
+      <mavlink_addr>INADDR_ANY</mavlink_addr>
+      <mavlink_tcp_port>4560</mavlink_tcp_port>
+      <enable_lockstep>1</enable_lockstep>
+      <use_tcp>1</use_tcp>
+
+      <hil_mode>0</hil_mode>
+      <hil_state_level>0</hil_state_level>
+      <qgc_addr>INADDR_ANY</qgc_addr>
+      <qgc_udp_port>14550</qgc_udp_port>
+      <mavlink_udp_port>14560</mavlink_udp_port>
+      <serialEnabled>0</serialEnabled>
+      <serialDevice>/dev/ttyACM0</serialDevice>
+      <baudRate>921600</baudRate>
+
+      <vehicle_is_tailsitter>0</vehicle_is_tailsitter>
+      <send_vision_estimation>0</send_vision_estimation>
+      <send_odometry>0</send_odometry>
+    </plugin>
+
+    <plugin name='actuators' filename='libgazebo_forces_moments_actuators_plugin.so'>
+      <robotNamespace/>
+      <linkName>base_link</linkName>
+      <copterConfig>4x</copterConfig>
+      <motorTimeConstant>0.07</motorTimeConstant>
+      <armLength>0.49</armLength>
+      <virtualYawMomentArm>0.0237</virtualYawMomentArm>
+
+      <!-- <maxMotorThrust>31.392</maxMotorThrust> -->
+      <motor_models>
+        <motor name='motor1'>
+          <motor_index>0</motor_index>
+          <coeffs>-0.0000000397959403 0.0001996456801152 -0.2773896905520106 118.7667175238575652</coeffs>
+        </motor>
+        <motor name='motor2'>
+          <motor_index>1</motor_index>
+          <coeffs>-0.0000000413595098 0.0002069219596305 -0.2858221900173662 121.2675504198610383</coeffs>
+        </motor>
+        <motor name='motor3'>
+          <motor_index>2</motor_index>
+          <coeffs>-0.0000000406769540 0.0002028435504012 -0.2787807080476987 117.7570545685150876</coeffs>
+        </motor>
+        <motor name='motor4'>
+          <motor_index>3</motor_index>
+          <coeffs>-0.0000000386173758 0.0001927613593388 -0.2630242287303664 109.8400430499503813</coeffs>
+        </motor>
+      </motor_models>
+    </plugin>
+
+    <plugin name='odometry' filename='libgazebo_odometry_plugin.so'>
+      <robotNamespace/>
+      <linkName>base_link</linkName>
+    </plugin>
+
+    <plugin name='gps_plugin' filename='libgazebo_gps_plugin.so'>
+      <robotNamespace/>
+      <gpsNoise>0</gpsNoise>
+    </plugin>
+
+    <plugin name='rotors_gazebo_imu_plugin' filename='libgazebo_imu_plugin.so'>
+      <robotNamespace/>
+      <linkName>base_link</linkName>
+      <imuTopic>/imu</imuTopic>
+      <gyroscopeNoiseDensity>0.0003394</gyroscopeNoiseDensity>
+      <gyroscopeRandomWalk>3.8785e-05</gyroscopeRandomWalk>
+      <gyroscopeBiasCorrelationTime>1000.0</gyroscopeBiasCorrelationTime>
+      <gyroscopeTurnOnBiasSigma>0.0087</gyroscopeTurnOnBiasSigma>
+      <accelerometerNoiseDensity>0.004</accelerometerNoiseDensity>
+      <accelerometerRandomWalk>0.006</accelerometerRandomWalk>
+      <accelerometerBiasCorrelationTime>300.0</accelerometerBiasCorrelationTime>
+      <accelerometerTurnOnBiasSigma>0.196</accelerometerTurnOnBiasSigma>
+    </plugin>
+  </model>
+</sdf>

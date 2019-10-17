@@ -1,0 +1,118 @@
+<sdf version='1.6'>
+  <model name='camera'>
+    <link name='base_link'>
+      <pose frame=''>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose frame=''>0 0 0 0 0 0</pose>
+        <mass>1.19</mass>
+        <inertia>
+          <ixx>0.014</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.022</iyy>
+          <iyz>0</iyz>
+          <izz>0.031</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_inertia_collision'>
+        <pose frame=''>0 0 0.0 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>0.100 0.100 0.1</size>
+          </box>
+        </geometry>
+        <surface>
+          <contact>
+            <ode>
+              <min_depth>0.001</min_depth>
+              <max_vel>0</max_vel>
+            </ode>
+          </contact>
+          <friction>
+            <ode/>
+          </friction>
+        </surface>
+      </collision>      
+      <gravity>0</gravity>      
+      <velocity_decay/>
+    
+
+
+    
+     <sensor name="color" type="camera">
+        <!-- <pose frame="realsense">0.12 -0.046 -0.004 0 0 0</pose> -->
+        <pose frame="realsense">0.0 0.0 0.0 0 0 0</pose> -->
+        <update_rate>20</update_rate>
+        <camera name="rgb">
+          <horizontal_fov>1.047</horizontal_fov> <!--60 degrees-->
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>R8G8B8</format>
+          </image>
+          <clip>
+            <near>0.1</near> 
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+          <distortion>
+            <k1>0.0</k1>
+            <k2>0.0</k2>
+            <k3>0.0</k3>
+            <p1>0.0</p1>
+            <p2>0.0</p2>
+
+            <!-- <k1>-0.283</k1>
+            <k2>0.0739</k2>
+            <k3>0.0</k3>
+            <p1>0.000193</p1>
+            <p2>0.0000176</p2>
+            <center>0.5 0.5</center> -->
+
+          </distortion>
+          <save enabled="true">
+            <path>/home/jjr/Pictures/Aruco/tmp</path>
+          </save>  
+        </camera>
+                 
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <cameraName>colour</cameraName>
+        <always_on>1</always_on>
+        <updateRate>0</updateRate>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>aero</frameName>
+        <height>480</height>
+        <width>640</width>
+        <CxPrime>320</CxPrime>
+        <Cx>320.0</Cx>
+        <Cy>240.0</Cy>        
+        <focal_length>554.38.0</focal_length>  <!-- image_width(pix) / (2*tan( hfov(rad) /2)) -->
+        <hackBaseline>0.0</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+
+        <!-- <distortionK1>-0.283</distortionK1>
+        <distortionK2>0.0739</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.000193</distortionT1>
+        <distortionT2>0.0000176</distortionT2> -->
+
+        <robotNamespace>realsense</robotNamespace> 
+      </plugin>       
+        <visualize>1</visualize>        
+    </sensor>
+
+    </link>
+
+    
+
+  </model>
+</sdf>

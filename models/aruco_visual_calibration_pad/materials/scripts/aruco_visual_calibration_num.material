@@ -1,0 +1,13 @@
+material ArucoVisualCalibration/Num
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture aruco_calibration_num.png
+			}
+		}
+	}
+}

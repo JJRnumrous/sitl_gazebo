@@ -295,7 +295,7 @@ void GazeboImuPlugin::OnUpdate(const common::UpdateInfo& _info) {
                                      angular_vel_I.Y(),
                                      angular_vel_I.Z());
 
-  addNoise(&linear_acceleration_I, &angular_velocity_I, dt);
+  // addNoise(&linear_acceleration_I, &angular_velocity_I, dt);
 
   // Copy Eigen::Vector3d to gazebo::msgs::Vector3d
   gazebo::msgs::Vector3d* linear_acceleration = new gazebo::msgs::Vector3d();

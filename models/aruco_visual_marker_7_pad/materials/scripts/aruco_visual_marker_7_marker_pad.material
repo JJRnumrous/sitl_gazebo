@@ -1,0 +1,13 @@
+material ArucoVisualMarker7Pad/Marker
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture aruco_mark_pad.png
+			}
+		}
+	}
+}

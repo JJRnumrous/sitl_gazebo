@@ -6,7 +6,7 @@ material ArucoVisualMarker10Pad/Marker
 		{
 			texture_unit
 			{
-				texture aruco_mark_10_pad.png
+				texture aruco_mark_pad.png
 			}
 		}
 	}

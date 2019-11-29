@@ -6,10 +6,10 @@
         <pose frame=''>0 0 0 0 0 0</pose>
         <mass>1.19</mass>
         <inertia>
-          <ixx>0.022</ixx>
+          <ixx>0.014</ixx>
           <ixy>0</ixy>
           <ixz>0</ixz>
-          <iyy>0.014</iyy> <!--actual x axis since ROS ENU(xyz)-->
+          <iyy>0.022</iyy> <!--actual x axis since ROS ENU(xyz)-->
           <iyz>0</iyz>
           <izz>0.031</izz>
         </inertia>
@@ -34,7 +34,7 @@
         </surface>
       </collision>
       <visual name='base_link_inertia_visual'>
-        <pose frame=''>0 0 0 0 0 3.14159265</pose> <!--1.570796327-->
+        <pose frame=''>0 0 0 0 0 1.570796327</pose> <!--1.570796327  3.14159265-->
         <geometry>
           <mesh>
             <scale>1 1 1</scale>
@@ -49,11 +49,12 @@
 
     
      <sensor name="color" type="camera">
-        <!-- <pose frame="realsense">0.12 -0.046 -0.004 0 0 0</pose> -->
-        <pose frame="realsense">0.045 0.13 0.0 0 0 1.570796327</pose> 
+        <pose frame="realsense">0.12 -0.038 0 0 0 0</pose>
+        <!-- <pose frame="realsense">0.0 0.1 0.0 0 0 1.570796327</pose>  -->
         <update_rate>14</update_rate>
         <camera name="rgb">
-          <horizontal_fov>1.22631043</horizontal_fov> <!--70.262 degrees-->
+          <horizontal_fov>0.87266</horizontal_fov> <!--50 degrees-->
+          <!-- <vertical_fov>0.6981</vertical_fov> 40 degrees -->
           <image>
             <width>640</width>
             <height>480</height>
@@ -88,7 +89,7 @@
           </save>   -->
         </camera>
                  
-      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+      <!-- <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
         <cameraName>colour</cameraName>
         <always_on>1</always_on>
         <updateRate>0</updateRate>
@@ -97,25 +98,25 @@
         <frameName>aero</frameName>
         <height>480</height>
         <width>640</width>
-        <CxPrime>321</CxPrime>
-        <Cx>321</Cx>
-        <Cy>241</Cy>        
-        <focal_length>454.78</focal_length>  <!-- image_width(pix) / (2*tan( hfov(rad) /2)) -->
-        <!-- <hackBaseline>0.0</hackBaseline>
+        <CxPrime>319.1454162597656</CxPrime>
+        <Cx>319.1454162597656</Cx>
+        <Cy>251.04150390625</Cy>        
+        <focal_length>625.7408447265625</focal_length>  image_width(pix) / (2*tan( hfov(rad) /2))
+        <hackBaseline>0.0</hackBaseline>
         <distortionK1>0.0</distortionK1>
         <distortionK2>0.0</distortionK2>
         <distortionK3>0.0</distortionK3>
         <distortionT1>0.0</distortionT1>
-        <distortionT2>0.0</distortionT2> -->
+        <distortionT2>0.0</distortionT2>
 
-        <distortionK1>1.2973396482900182e-01</distortionK1>
-        <distortionK2>-9.1613672795706924e-01</distortionK2>        
-        <distortionT1>-9.4123606947222921e-04</distortionT1>
-        <distortionT2>-3.2686786900961188e-04</distortionT2>
-        <distortionK3>1.2153915393328878e+00 </distortionK3>
+        <distortionK1>-8.593288064002991e-2</distortionK1>
+        <distortionK2>6.511234492063522e-2</distortionK2>        
+        <distortionT1>-2.566844159446191e-5</distortionT1>
+        <distortionT2>2.3345982481259853e-4</distortionT2>
+        <distortionK3>0.0 </distortionK3>
 
         <robotNamespace>realsense</robotNamespace> 
-      </plugin>       
+      </plugin>        -->
         <visualize>1</visualize>        
     </sensor>
 
@@ -130,8 +131,8 @@
       <linkName>base_link</linkName>
       <copterConfig>4x</copterConfig>
       <maxMotorThrust>5.834956749999999</maxMotorThrust>
-      <motorTimeConstant>0.005</motorTimeConstant>
-      <armLength>0.18</armLength>
+      <motorTimeConstant>0.01</motorTimeConstant>
+      <armLength>0.36</armLength>
       <virtualYawMomentArm>0.0463</virtualYawMomentArm>
     </plugin>
 
@@ -156,14 +157,14 @@
 
     <plugin name='gps_plugin' filename='libgazebo_gps_plugin.so'>
       <robotNamespace/>
-      <gpsNoise>1</gpsNoise>
+      <gpsNoise>0</gpsNoise>
     </plugin>
 
       <plugin name='rotors_gazebo_imu_plugin' filename='libgazebo_imu_plugin.so'>
       <robotNamespace/>
       <linkName>base_link</linkName>
       <imuTopic>/imu</imuTopic>
-      <visionSubTopic>/vision_odom</visionSubTopic>
+      <visionSubTopic>/vision_odom</visionSubTopic>      
       <gyroscopeNoiseDensity>0.0003394</gyroscopeNoiseDensity>
       <gyroscopeRandomWalk>3.8785e-05</gyroscopeRandomWalk>
       <gyroscopeBiasCorrelationTime>1000.0</gyroscopeBiasCorrelationTime>

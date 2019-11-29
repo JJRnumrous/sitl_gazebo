@@ -12,7 +12,7 @@
     <!-- Quadrotor -->
     <include>
       <uri>model://aero</uri>
-      <pose>0 0 0 0 0 0</pose>
+      <pose>0 0 0 0 0 1.570796327</pose>
     </include>
 
     <!-- <include>
@@ -26,78 +26,126 @@
     <!-- Calibration markers -->
      <!-- <include>
       <uri>model://aruco_visual_calibration</uri>
-      <pose>0 2 0 1.5708 -1.5708 0</pose>
+      <pose>0.038 0.44 0.1 0.0 -1.5708 1.5708</pose>
     </include> -->
 
-<include>
+<!-- <include>
 	<uri>model://aruco_visual_marker_0</uri>
-	<pose>0.000000 0.800000 0.120000 0.000000 -1.570796 1.570796</pose>
+	<pose>0.042500 0.930000 0.120000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_0_pad</uri>
-	<pose>0.000000 0.800900 0.120000 0.000000 -1.570796 1.570796</pose>
+	<pose>0.042500 0.930900 0.120000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_1</uri>
-	<pose>0.000000 0.800000 0.380000 0.000000 -1.570796 1.570796</pose>
+	<pose>-0.042500 0.930000 0.345000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_1_pad</uri>
-	<pose>0.000000 0.800900 0.380000 0.000000 -1.570796 1.570796</pose>
+	<pose>-0.042500 0.930900 0.345000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_2</uri>
-	<pose>0.000000 0.800000 0.640000 0.000000 -1.570796 1.570796</pose>
+	<pose>0.042500 0.930000 0.570000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_2_pad</uri>
-	<pose>0.000000 0.800900 0.640000 0.000000 -1.570796 1.570796</pose>
+	<pose>0.042500 0.930900 0.570000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_3</uri>
-	<pose>0.260000 0.800000 0.640000 0.000000 -1.570796 1.570796</pose>
+	<pose>-0.042500 0.930000 0.795000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_3_pad</uri>
-	<pose>0.260000 0.800900 0.640000 0.000000 -1.570796 1.570796</pose>
+	<pose>-0.042500 0.930900 0.795000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_4</uri>
-	<pose>0.520000 0.800000 0.640000 0.000000 -1.570796 1.570796</pose>
+	<pose>0.042500 0.930000 1.020000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_4_pad</uri>
-	<pose>0.520000 0.800900 0.640000 0.000000 -1.570796 1.570796</pose>
+	<pose>0.042500 0.930900 1.020000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_5</uri>
-	<pose>0.780000 0.800000 0.640000 0.000000 -1.570796 1.570796</pose>
+	<pose>-0.042500 0.930000 1.245000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_5_pad</uri>
-	<pose>0.780000 0.800900 0.640000 0.000000 -1.570796 1.570796</pose>
+	<pose>-0.042500 0.930900 1.245000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_6</uri>
-	<pose>1.040000 0.800000 0.640000 0.000000 -1.570796 1.570796</pose>
+	<pose>0.042500 0.930000 1.470000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_6_pad</uri>
-	<pose>1.040000 0.800900 0.640000 0.000000 -1.570796 1.570796</pose>
+	<pose>0.042500 0.930900 1.470000 0.000000 -1.570796 1.570796</pose>
+</include>
+<include>
+	<uri>model://aruco_visual_marker_7</uri>
+	<pose>-0.042500 0.930000 1.695000 0.000000 -1.570796 1.570796</pose>
+</include>
+<include>
+	<uri>model://aruco_visual_marker_7_pad</uri>
+	<pose>-0.042500 0.930900 1.695000 0.000000 -1.570796 1.570796</pose>
+</include>
+<include>
+	<uri>model://aruco_visual_marker_8</uri>
+	<pose>0.252500 0.930000 1.670000 0.000000 -1.570796 1.570796</pose>
+</include>
+<include>
+	<uri>model://aruco_visual_marker_8_pad</uri>
+	<pose>0.252500 0.930900 1.670000 0.000000 -1.570796 1.570796</pose>
+</include>
+<include>
+	<uri>model://aruco_visual_marker_9</uri>
+	<pose>0.477500 0.930000 1.755000 0.000000 -1.570796 1.570796</pose>
+</include>
+<include>
+	<uri>model://aruco_visual_marker_9_pad</uri>
+	<pose>0.477500 0.930900 1.755000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_10</uri>
-	<pose>-0.260000 0.400000 0.640000 0.000000 -1.570796 1.570796</pose>
+	<pose>0.702500 0.930000 1.670000 0.000000 -1.570796 1.570796</pose>
 </include>
 <include>
 	<uri>model://aruco_visual_marker_10_pad</uri>
-	<pose>-0.260000 0.400900 0.640000 0.000000 -1.570796 1.570796</pose>
+	<pose>0.702500 0.930900 1.670000 0.000000 -1.570796 1.570796</pose>
 </include>
+<include>
+	<uri>model://aruco_visual_marker_11</uri>
+	<pose>0.927500 0.930000 1.755000 0.000000 -1.570796 1.570796</pose>
+</include>
+<include>
+	<uri>model://aruco_visual_marker_11_pad</uri>
+	<pose>0.927500 0.930900 1.755000 0.000000 -1.570796 1.570796</pose>
+</include>
+<include>
+	<uri>model://aruco_visual_marker_12</uri>
+	<pose>1.152500 0.930000 1.670000 0.000000 -1.570796 1.570796</pose>
+</include>
+<include>
+	<uri>model://aruco_visual_marker_12_pad</uri>
+	<pose>1.152500 0.930900 1.670000 0.000000 -1.570796 1.570796</pose>
+</include>
+<include>
+	<uri>model://aruco_visual_marker_13</uri>
+	<pose>1.377500 0.930000 1.755000 0.000000 -1.570796 1.570796</pose>
+</include>
+<include>
+	<uri>model://aruco_visual_marker_13_pad</uri>
+	<pose>1.377500 0.930900 1.755000 0.000000 -1.570796 1.570796</pose>
+</include> -->
     
 
     <!-- Only one ROS interface plugin is required per world, as any other plugin can connect a Gazebo
          topic to a ROS topic (or vise versa). -->
-   <plugin name="ros_interface_plugin" filename="libgazebo_ros_interface_plugin.so"/>
+   <!-- <plugin name="ros_interface_plugin" filename="libgazebo_ros_interface_plugin.so"/> -->
 
 
 
